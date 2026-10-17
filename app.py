@@ -6,12 +6,14 @@ import time
 from groq import Groq
 
 # ─────────────────────────────────────────────
-# Config — paste your Groq key below
+# Config
+# The Groq API key is entered in the app UI (never hardcoded or committed).
+# Optionally, set a GROQ_API_KEY environment variable to pre-fill it.
 # ─────────────────────────────────────────────
 MODEL           = "llama-3.3-70b-versatile"
 MAX_ITER        = 3
 DB_FILE         = "history.json"
-DEFAULT_API_KEY = ""   
+DEFAULT_API_KEY = os.getenv("GROQ_API_KEY", "")
 
 # ─────────────────────────────────────────────
 # Markdown → HTML helper (fixes bold/italic/newlines)
@@ -172,8 +174,8 @@ CUSTOM_CSS = """
 .final-box   { background:#eaf3de; border:1px solid #c0dd97; border-radius:10px;
                padding:16px 18px; margin-top:4px; }
 .final-box h4 { color:#3b6d11; margin-bottom:10px; font-size:13px; font-weight:600; margin-top:0; }
-.final-text  { font-size:14px; line-height:1.8; color:#1e4620; } /* 💡 明确指定了深绿色字体 */
-.final-text p { color:#1e4620; margin-bottom:12px; } /* 💡 确保段落标签也是深色 */
+.final-text  { font-size:14px; line-height:1.8; color:#1e4620; } /* dark green body text */
+.final-text p { color:#1e4620; margin-bottom:12px; } /* keep paragraph text dark too */
 .final-text strong { font-weight:600; color:#0f2d10; }
 .final-text em     { font-style:italic; }
 .final-text code   { background:rgba(0,0,0,0.08); padding:1px 5px;
